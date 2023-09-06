@@ -1,0 +1,32 @@
+# fly.toml app configuration file generated for weaviate-staging on 2023-09-05T11:07:36-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "weaviate-staging"
+primary_region = "sjc"
+
+[build]
+
+[env]
+  SWAP = "1"
+  SWAP_SIZE = "512M"
+  QUERY_DEFAULTS_LIMIT = 25
+  AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED = "false"
+  AUTHENTICATION_APIKEY_ENABLED = "true"
+  PERSISTENCE_DATA_PATH = "/var/lib/weaviate"
+  DEFAULT_VECTORIZER_MODULE = "text2vec-openai"
+  ENABLE_MODULES = "text2vec-openai"
+  CLUSTER_HOSTNAME = "node1"
+
+[mounts]
+  source="weaviate_staging_data"
+  destination="/var/lib/weaviate"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]

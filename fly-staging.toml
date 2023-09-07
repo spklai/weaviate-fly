@@ -20,8 +20,8 @@ primary_region = "sjc"
   CLUSTER_HOSTNAME = "node1"
 
 [mounts]
-  source="weaviate_staging_data"
-  destination="/var/lib/weaviate"
+  source = "weaviate_staging_data"
+  destination = "/var/lib/weaviate"
 
 [http_service]
   internal_port = 8080
